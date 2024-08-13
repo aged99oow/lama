@@ -1,5 +1,6 @@
 #
-# Lama.py 2023/8/5
+# ラマ 1.1
+# Lama.py 2024/8/13
 #
 DEBUG_MODE = False
 import pyxel
@@ -40,7 +41,6 @@ class Confetti:  # 紙吹雪
 
     def draw(self):
         pyxel.rect(self.x, self.y, 2, 2, self.c)
-        #pyxel.pset(self.x, self.y, 7)
 
 class App:
     def gamestart(self):
@@ -74,7 +74,7 @@ class App:
             del self.deck[0:6]
 
     def __init__(self):
-        pyxel.init(WIDTH, HEIGHT, title='Lama')
+        pyxel.init(WIDTH, HEIGHT, title='Lama 1.1')
         pyxel.load('assets/Lama.pyxres')
         pyxel.mouse(True)
         self.conft = []  # 紙吹雪
@@ -86,7 +86,7 @@ class App:
         pyxel.run(self.update, self.draw)
 
     def holddown(self):
-        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT, 70, 1):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT, hold=70, repeat=1):
             if self.rept==0:
                 self.rept = 1
             elif self.rept==1:
@@ -153,7 +153,6 @@ class App:
                 self.discard = []
             if pyxel.btnr(pyxel.MOUSE_BUTTON_LEFT) and self.mode in (MD_LAMA, MD_KUMA):
                 self.roundstart()
-                #self.shuffle(self.chara)
                 self.st = ST_DEAL
 
         elif self.st==ST_DEAL:
